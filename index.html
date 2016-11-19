@@ -1,139 +1,136 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<html class="full" lang="en">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>relaxation-music.github.io</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Responsive View Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Relax | Coolest Relaxation Music Playlist (Open beta)</title>
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
 
-    <!-- Animate.CSS -->
-    <link rel="stylesheet" href="css/animate.css">
-
-    <!-- Font Aewsome Style -->
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- plugins -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
 
-    <!-- Bootstrap Style -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <!-- Reset Style -->
-    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Custom CSS -->
+    <link href="css/master.css" rel="stylesheet">
 
-    <!-- Main Style -->
-    <link rel="stylesheet" href="css/main.css">
- 
-    <link href="css/colors/default-color.css" rel="stylesheet"><!-- alternate style end -->
-
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
+
 <body>
-<!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-<!-- screen loader start -->
-<div class="screen-loader"></div><!-- screen loader end -->
-<!-- preload start -->
-<div id="preload">
-    <!-- preload status start -->
-    <div id="preload-status"></div><!-- preload status end -->
-</div><!-- preload end -->
+    <!-- <div class="overlay"></div> -->
+    <div id="jquery_jplayer" class="jp-jplayer"></div>
+    <div id="jp_container" class="jp-audio" role="application" aria-label="media player">
+    	<div class="jp-type-playlist">
+    		<div class="jp-gui jp-interface">
+                <!-- music-player -->
+                <div class="music-player">
+                    <div class="container">
+                        <div class="player">
+                            <span class="music-timer pull-right jp-time-holder">
+                                <span class="current-duration jp-current-time">00:00</span> / <span class="music-duration jp-duration">00:00</span>
+                            </span>
+                            <h5 class="current-playing" id="current-track">Click to play the selected track</h5>
+                            <div class="seeder jp-progress jp-seek-bar">
+                                <span class="seeder-layout"><!-- seeder will appear here --></span>
+                                <span class="seeder-progress jp-play-bar"><!-- seeder will appear here --></span>
+                            </div>
+                            <div class="controls">
+                                <ul class="list-inline pull-right jp-volume-controls">
+                                    <li>
+                                        <span class="volume-on jp-mute"><i class="fa fa-volume-up"></i></span>
+                                        <span class="volume-mute jp-unmute" style="display:none;"><i class="fa fa-volume-off disabled">&nbsp;&nbsp;</i></span>
+                                    </li>
+                                    <li class="no-padding">
+                                        <div class="volume-seeder jp-volume-bar">
+                                            <span class="seeder-layout"><!-- seeder will appear here --></span>
+                                            <span class="seeder-progress volume jp-volume-bar-value"><!-- seeder will appear here --></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline pull-right control-toggles">
+                                  <li>
+                                    <span class="jp-shuffle"><i class="fa fa-random"></i></span>
+                                  </li>
+                                  <li>
+                                    <span class="jp-repeat"><i class="fa fa-repeat"></i></span>
+                                  </li>
+                                </ul>
+                                <ul class="list-inline jp-controls">
+                                    <li><span><i class="fa fa-chevron-circle-left jp-previous"></i></span></li>
+                                    <li><span>
+                                        <i class="fa fa-play-circle jp-play"></i>
+                                        <i class="fa fa-pause-circle jp-pause" style="display:none;"></i>
+                                    </span></li>
+                                    <li><span><i class="fa fa-chevron-circle-right jp-next"></i></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- === Header Section === -->
-<div id="container">
-	<!-- +++ Intro Section ++++ -->
-    <section class="intro">
-    	<!-- Intro Section Background-image -->
-    	<div class="intro-image"></div>
+                <!-- music-player -->
+    		</div>
+    		<div class="jp-playlist">
+                <!-- music-playlist -->
+                <div class="music-playlist">
+                    <div class="loader-overlay">
+                      <i class="fa fa-spin fa-gear loader"></i>
+                    </div>
+                    <div id="slimscroll">
+                        <select class="form-control album-list" id="album_repository_list">
+                          <option value="">Loading....</option>
+                        </select>
+                        <div class="track-list">
+                          <ul class="list-unstyled">
+                          </ul>
+                        </div>
 
-		<!-- ====+++ Intro Section Content +++==== -->
-		<div class="center-content">
+                    </div>
+                </div>
+                <!-- music-playlist -->
+    		</div>
+    		<div class="jp-no-solution" style="display:none;">
+    			<span>Update Required</span>
+    			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+    		</div>
+    	</div>
 
+ </div><!-- jp_container -->
 
-			<div class="intro-content text-center">
-				<!-- Logo -->
-				<div class="logo">
-					<h2 class="text-logo">Relaxation-music</h2>
-				</div><!-- /End logo -->
-				<!-- ==== Main Heading ==== -->
-				<h1 class="intro-title">We are Comming Soon<span class="obak">!</span></h1>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-				<!-- Spin Clock -->
-				<i class="fa fa-clock-o fa-spin fa-4x fa-clock-spin"></i>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- slim-scroll -->
+    <script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/functions.js" charset="utf-8"></script>
+    <script src="src/player/jplayer/jquery.jplayer.min.js" charset="utf-8"></script>
+    <script src="src/player/add-on/jplayer.playlist.min.js" charset="utf-8"></script>
+    <script src="src/master.js" charset="utf-8"></script>
+    <script>
+        $(function () {
+            $('#slimscroll').slimScroll({
+                height: '100%'
+            });
+        });
 
-				<!-- ====+++ Countdown Timer +++==== -->
-				<ul class="countdown">
-			        <li>
-			            <span class="days">07</span>
-			            <p class="days-ref">days</p>
-			        </li>
-			        <li class="seperator"><i class="fa fa-clock-o"></i><br><i class="fa fa-clock-o"></i></li>
-			        <li>
-			            <span class="hours">00</span>
-			            <p class="hours-ref">hours</p>
-			        </li>
-			        <li class="seperator"><i class="fa fa-clock-o"></i><br><i class="fa fa-clock-o"></i></li>
-			        <li>
-			            <span class="minutes">00</span>
-			            <p class="minutes-ref">minutes</p>
-			        </li>
-			        <li class="seperator"><i class="fa fa-clock-o"></i><br><i class="fa fa-clock-o"></i></li>
-			        <li>
-			            <span class="seconds">00</span>
-			            <p class="seconds-ref">seconds</p>
-			        </li>
-			    </ul>
-
-				<!-- ==== Intro Section Sub-Heading ==== -->
-				<div class="intro-subtitle">
-					<p>We are currently Creating Something Awesome.</p>
-				</div>
-
-			</div> <!-- /End Intro Section Content -->
-		</div>
-		<!-- ==== Intro Section Bottom Content ==== -->
-		<div class="container-bottom-content">
-			<!-- ==== Trigger Button ==== -->
-			<button class="trigger">
-				<span>View content</span>
-			</button>
-		</div> <!-- /End Intro Section Bottom Content -->
-	</section><!-- /end intro section -->
-</div>
-
-<!-- jQuery Library -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-<!-- Modernizer -->
-<script src="js/modernizr.custom.js"></script>
-<!-- Bootstrap JS -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Classie JS -->
-<script src="js/classie.js"></script>
-<!-- Countdown JS -->
-<script src="js/jquery.downCount.js"></script>
-<!-- Mailchimp JS Plugin -->
-<script src="js/jquery.ajaxchimp.min.js"></script>
-<!-- Contact Form JS -->
-<script src="js/form-contact.js"></script>
-<!-- Goole map API -->
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<!-- Google map js -->
-<script src="js/gmaps.js"></script>
-<!-- Nice Scroll JS -->
-<script src="js/jquery.nicescroll.3.5.4.js"></script>
-<!-- Custom JS -->
-<script src="js/main.js"></script>
+    </script>
 </body>
+
 </html>
